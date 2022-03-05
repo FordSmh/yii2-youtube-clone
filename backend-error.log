@@ -1,0 +1,99 @@
+2022/03/05 04:52:32 [error] 12#12: *317 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+ParseError: syntax error, unexpected token "echo" in /var/www/youtube/public/backend/views/layouts/base.php:28
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/var/www/youtub...', Array)
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/widgets/ContentDecorator.php(79): yii\base\View->renderFile('/var/www/youtub...', Array)
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/base/Widget.php(115): yii\widgets\ContentDecorator->run()
+#3 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(525): yii\base\Widget::end()
+#4 /var/www/youtube/public/backend/views/layouts/main.php(29): yii\base\View->endContent()
+#5 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(347): require('/var/www/youtub...')
+#6 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/var/www/youtub...', Array)
+#7 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(422): yii\base\View->renderFile('/var/www/youtub...', Array, Object(backend\controllers\SiteController))
+#8 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(408): yii\base\Controller->renderContent('<div class="sit...')
+#9 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorAction.php(139): yii\base\Controller->render('error', Array)
+#10 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorAction.php(118): yii\web\ErrorAction->renderHtmlResponse()
+#11 [internal function]: yii\web\ErrorAction->run()
+#12 /var/www/youtube/public/vendor/yiisoft/yii2/base/Action.php(93): call_user_func_array(Array, Array)
+#13 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\Action->runWithParams(Array)
+#14 /var/www/youtube/public/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#15 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/
+2022/03/05 04:52:32 [error] 12#12: *317 FastCGI sent in stderr: "		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c',
+    'OCI_INCLUDE_DIR' => '/opt/oracle/instantclient_12_1/sdk/include',
+    'LC_ALL' => 'POSIX',
+    'PWD' => '/var/www',
+    'PHP_SHA256' => '66dc4d1bc86d9c1bc255b51b79d337ed1a7a035cf71230daabbf9a4ca35795eb',
+    'DB_1_ENV_MYSQL_PASSWORD' => '',
+    'DB_1_ENV_MYSQL_USER' => '',
+    'DB_1_ENV_MYSQL_DATABASE' => '',
+    'USER' => 'www-data',
+    'HTTP_COOKIE' => 'advanced-backend=5no42klirrs6cdbpj2lljtl20j; _identity-backend=40cb67312902ebe70f43da55c17b219244e3c0f136d1e4ba409e289f7f45a8f5a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22iFfopQYY5-uFmP3PgxurQFIpHd6Ff_tW%22%2C2592000%5D%22%3B%7D; _csrf-backend=6913f7d586263e185e3478a138e3c572570f9971e1b55f82de6d4732e2ad6988a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22oLEhZ5vWS1lFvhs7x-mAzbMQlKyM5w_X%22%3B%7D',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-RU,en;q=0.9,ru-RU;q=0.8,ru;q=0.7,en-GB;q=0.6,en-US;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_REFERER' => 'http://backend.test/site/logout',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_HOST' => 'backend.test',
+    'REDIRECT_STATUS' => '200',
+    'SERVER_NAME' => 'backend.test',
+    'SERVER_PORT' => '80',
+    'SERVER_ADDR' => '192.168.128.6',
+    'REMOTE_PORT' => '45084',
+    'REMOTE_ADDR' => '192.168.128.1',
+    'SERVER_SOFTWARE' => 'nginx/1.21.6',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'REQUEST_SCHEME' => 'http',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'DOCUMENT_ROOT' => '/var/www/youtube/public/backend/web',
+    'DOCUMENT_URI' => '/index.php',
+    'REQUEST_URI' 
+2022/03/05 04:52:33 [error] 12#12: *317 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+ParseError: syntax error, unexpected token "echo" in /var/www/youtube/public/backend/views/layouts/base.php:28
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/var/www/youtub...', Array)
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/widgets/ContentDecorator.php(79): yii\base\View->renderFile('/var/www/youtub...', Array)
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/base/Widget.php(115): yii\widgets\ContentDecorator->run()
+#3 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(525): yii\base\Widget::end()
+#4 /var/www/youtube/public/backend/views/layouts/main.php(29): yii\base\View->endContent()
+#5 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(347): require('/var/www/youtub...')
+#6 /var/www/youtube/public/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/var/www/youtub...', Array)
+#7 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(422): yii\base\View->renderFile('/var/www/youtub...', Array, Object(backend\controllers\SiteController))
+#8 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(408): yii\base\Controller->renderContent('<div class="sit...')
+#9 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorAction.php(139): yii\base\Controller->render('error', Array)
+#10 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorAction.php(118): yii\web\ErrorAction->renderHtmlResponse()
+#11 [internal function]: yii\web\ErrorAction->run()
+#12 /var/www/youtube/public/vendor/yiisoft/yii2/base/Action.php(93): call_user_func_array(Array, Array)
+#13 /var/www/youtube/public/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\Action->runWithParams(Array)
+#14 /var/www/youtube/public/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#15 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/
+2022/03/05 04:52:33 [error] 12#12: *317 FastCGI sent in stderr: "ck-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64',
+    'DOCKER_TLS_VERIFY' => '1',
+    'PHP_VERSION' => '8.0.10',
+    'PGID' => '1000',
+    'GPG_KEYS' => '1729F83938DA44E27BA0F4D3DBDB397470D12172 BFDDD28642824F8118EF77909B67A5C12229118F',
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64',
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-8.0.10.tar.xz.asc',
+    'PHP_URL' => 'https://www.php.net/distributions/php-8.0.10.tar.xz',
+    'DOCKER_CERT_PATH' => '/certs/client',
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+    'OCI_VERSION' => '12',
+    'IMAGEMAGICK_VERSION' => 'latest',
+    'FAKETIME' => '-0',
+    'DEBIAN_FRONTEND' => 'noninteractive',
+    'PUID' => '1000',
+    'DOCKER_TLS_CERTDIR' => '/certs',
+    'DOCKER_HOST' => 'tcp://docker-in-docker:2376',
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c',
+    'OCI_INCLUDE_DIR' => '/opt/oracle/instantclient_12_1/sdk/include',
+    'LC_ALL' => 'POSIX',
+    'PWD' => '/var/www',
+    'PHP_SHA256' => '66dc4d1bc86d9c1bc255b51b79d337ed1a7a035cf71230daabbf9a4ca35795eb',
+    'DB_1_ENV_MYSQL_PASSWORD' => '',
+    'DB_1_ENV_MYSQL_USER' => '',
+    'DB_1_ENV_MYSQL_DATABASE' => '',
+    'USER' => 'www-data',
+    'HTTP_COOKIE' => 'advanced-backend=5no42klirrs6cdbpj2lljtl20j; _identity-backend=40cb67312902ebe70f43da55c17b219244e3c0f136d1e4ba409e289f7f45a8f5a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22iFfopQYY5-uFmP3PgxurQFIpHd6Ff_tW%22%2C2592000%5D%22%3B%7D; _csrf-backend=6913f7d586263e185e3478a138e3c572570f9971e1b55f82de6d4732e2ad6988a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22oLEhZ5vWS1lFvhs7x-mAzbMQlKyM5w_X%22%3B%7D',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-RU,en;q=0.9,ru-RU;q=0.8,ru;q=0.7,en-GB;q=0.6,en-US;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT' =
