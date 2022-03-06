@@ -11,7 +11,7 @@ NavBar::begin([
     ],
 ]);
 $menuItems = [
-    ['label' => 'Upload video', 'url' => ['/site/index']],
+    ['label' => 'Upload video', 'url' => ['/videos/create']],
 ];
 if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

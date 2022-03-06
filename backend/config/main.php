@@ -43,8 +43,12 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'videos/update/<video_id>' => 'videos/update'
             ],
         ],
+        'assetManager' => [
+            'appendTimestamp' => true
+        ]
 
     ],
     'params' => $params,
