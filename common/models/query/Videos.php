@@ -8,7 +8,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
-use yii\web\User;
+use common\models\User;
 
 /**
  * This is the model class for table "{{%videos}}".
@@ -28,6 +28,10 @@ use yii\web\User;
  */
 class Videos extends \yii\db\ActiveRecord
 {
+
+    const STATUS_UNLISTED = 0;
+    const STATUS_PUBLISHED = 1;
+
     /**
      * @var UploadedFile
      */
@@ -66,10 +70,18 @@ class Videos extends \yii\db\ActiveRecord
             [['video_id'], 'string', 'max' => 16],
             [['title', 'tags', 'video_name'], 'string', 'max' => 512],
             [['video_id'], 'unique'],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            ['has_thumbnail', 'default', 'value' => 0],
+            ['status', 'default', 'value' => self::STATUS_UNLISTED],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(),'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
+    public function getStatusLabels() {
+        return [
+            self::STATUS_UNLISTED => 'Unlisted',
+            self::STATUS_PUBLISHED => 'Published'
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -111,13 +123,13 @@ class Videos extends \yii\db\ActiveRecord
     public function save($runValidation = true, $attributeNames = null)
     {
         $isInsert = $this->isNewRecord;
+
         if ($isInsert) {
             $this->video_id = Yii::$app->security->generateRandomString(8);
             $this->title = $this->video->name;
             $this->video_name = $this->video->name;
-
-
         }
+
         $saved = parent::save($runValidation, $attributeNames);
 
         if (!$saved) {
@@ -132,5 +144,9 @@ class Videos extends \yii\db\ActiveRecord
         }
 
         return true;
+    }
+
+    public function getVideoLink() {
+        return yii::$app->params['frontendUrl'].'storage/videos/'.$this->video_id.'.mp4';
     }
 }
