@@ -15,6 +15,7 @@ use yii\widgets\ActiveForm;
     );?>
 
     <div class="row">
+        <?= $form->errorSummary($model)?>
         <div class="col-sm-8">
 
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
