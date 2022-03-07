@@ -50,17 +50,17 @@ class VideosController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Videos::find(),
+            'query' => Videos::find()->creator(Yii::$app->user->id),
             /*
             'pagination' => [
                 'pageSize' => 50
-            ],
+            ],*/
             'sort' => [
                 'defaultOrder' => [
-                    'video_id' => SORT_DESC,
+                    'created_at' => SORT_DESC,
                 ]
             ],
-            */
+
         ]);
 
         return $this->render('index', [

@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group">
                 <div class="mb-3">
                     <label for="thumbnail" class="form-label"><?=$model->getAttributeLabel('thumbnail')?></label>
-                    <input class="form-control" type="file" id="thumbnail" name="thumbnail">
+                    <input type="file" class="form-control" id="thumbnail" name="thumbnail">
                 </div>
             </div>
 
@@ -34,8 +34,7 @@ use yii\widgets\ActiveForm;
 
         </div>
         <div class="col-sm-4 bg-light py-2">
-            <video poster="<?=$model->getThumbnailLink()?>" class="ratio ratio-16x9 mb-2" controls>
-                <source src="<?=$model->getVideoLink()?>" type="video/mp4">
+            <video poster="<?=$model->getThumbnailLink()?>" class="ratio ratio-16x9 mb-2" controls src="<?=$model->getVideoLink()?>">
             </video>
             <div>
                 <p class="text-muted m-0">Video link</p>

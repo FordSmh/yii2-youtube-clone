@@ -100,3 +100,27 @@ Stack trace:
 2022/03/06 10:49:19 [error] 11#11: *487 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected token "=" in /var/www/youtube/public/common/config/main.php on line 2" while reading response header from upstream, client: 192.168.128.1, server: backend.test, request: "POST /videos/update/wLbarBGT HTTP/1.1", upstream: "fastcgi://192.168.128.5:9000", host: "backend.test", referrer: "http://backend.test/videos/update/wLbarBGT"
 2022/03/06 10:49:21 [error] 11#11: *487 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected token "=" in /var/www/youtube/public/common/config/main.php on line 2" while reading response header from upstream, client: 192.168.128.1, server: backend.test, request: "GET /videos/update/wLbarBGT HTTP/1.1", upstream: "fastcgi://192.168.128.5:9000", host: "backend.test", referrer: "http://backend.test/videos/view?video_id=wLbarBGT"
 2022/03/06 10:49:21 [error] 11#11: *487 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected token "=" in /var/www/youtube/public/common/config/main.php on line 2" while reading response header from upstream, client: 192.168.128.1, server: backend.test, request: "GET /videos/view?video_id=wLbarBGT HTTP/1.1", upstream: "fastcgi://192.168.128.5:9000", host: "backend.test", referrer: "http://backend.test/videos/index"
+2022/03/07 17:14:07 [error] 11#11: *1142 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\base\InvalidConfigException: Unknown component ID: request in /var/www/youtube/public/vendor/yiisoft/yii2/di/ServiceLocator.php:139
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/base/Module.php(766): yii\di\ServiceLocator->get('request', true)
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/web/Application.php(160): yii\base\Module->get('request')
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/base/Component.php(139): yii\web\Application->getRequest()
+#3 /var/www/youtube/public/vendor/yiisoft/yii2/di/ServiceLocator.php(77): yii\base\Component->__get('request')
+#4 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(503): yii\di\ServiceLocator->__get('request')
+#5 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(116): yii\web\ErrorHandler->shouldRenderSimpleHtml()
+#6 /var/www/youtube/public/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException(Object(yii\base\InvalidConfigException))
+#7 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\InvalidConfigException))
+#8 {main}
+Previous exception:
+yii\base\InvalidConfigException: The configuration for the "debug" component must contain a "class" element. in /var/www/youtube/public/vendor/yiisoft/yii2/di/ServiceLocator.php:209
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/di/ServiceLocator.php(265): yii\di\ServiceLocator->set('debug', Array)
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/base/Component.php(180): yii\di\ServiceLocator->setComponents(Array)
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/BaseYii.php(558): yii\base\Component->__set('components', Array)
+#3 /var/www/youtube/public/vendor/yiisoft/yii2/base/BaseObject.php(107): yii\BaseYii::configure(Object(yii\web\Application), Array)
+#4 /var/www/youtube/public/vendor/yiisoft/yii2/base/Application.php(204): yii\base\BaseObject->__construct(Array)
+#5 /var/www/youtube/public
+2022/03/07 17:14:07 [error] 11#11: *1142 FastCGI sent in stderr: "AT' => 1646673247.829873,
+    'REQUEST_TIME' => 1646673247,
+]" while reading upstream, client: 192.168.128.1, server: backend.test, request: "GET /videos/update/UXTJ4z6W HTTP/1.1", upstream: "fastcgi://192.168.128.5:9000", host: "backend.test", referrer: "http://backend.test/videos/index"

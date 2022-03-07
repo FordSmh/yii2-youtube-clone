@@ -133,7 +133,6 @@ class Videos extends \yii\db\ActiveRecord
     public function save($runValidation = true, $attributeNames = null)
     {
         $isInsert = $this->isNewRecord;
-
         if ($isInsert) {
             $this->video_id = Yii::$app->security->generateRandomString(8);
             $this->title = $this->video->name;
@@ -147,22 +146,23 @@ class Videos extends \yii\db\ActiveRecord
         if (!$saved) {
             return false;
         }
-
         if ($isInsert) {
-            $videoPath = Yii::getAlias('@frontend/web/storage/videos/'.$this->video_id.'.mp4');
-            if(!is_dir(dirname($videoPath))) {
+            $videoPath = Yii::getAlias('@frontend/web/storage/videos/' . $this->video_id . '.mp4');
+            if (!is_dir(dirname($videoPath))) {
                 FileHelper::createDirectory(dirname($videoPath));
             }
             $this->video->saveAs($videoPath);
         }
-
-        if($this->thumbnail) {
-            $thumbnailPath = Yii::getAlias('@frontend/web/storage/thumbs/'.$this->video_id.'.jpg');
-            if(!is_dir(dirname($thumbnailPath))) {
+        if ($this->thumbnail) {
+            $thumbnailPath = Yii::getAlias('@frontend/web/storage/thumbs/' . $this->video_id . '.jpg');
+            if (!is_dir(dirname($thumbnailPath))) {
                 FileHelper::createDirectory(dirname($thumbnailPath));
             }
             $this->thumbnail->saveAs($thumbnailPath);
-            Image::getImagine()->open($thumbnailPath)->thumbnail(new Box(1280, 1280))->save();
+            Image::getImagine()
+                ->open($thumbnailPath)
+                ->thumbnail(new Box(1280, 1280))
+                ->save();
         }
 
         return true;
@@ -173,6 +173,17 @@ class Videos extends \yii\db\ActiveRecord
     }
 
     public function getThumbnailLink() {
-        return $this->thumbnail ? yii::$app->params['frontendUrl'].'storage/thumbs/'.$this->video_id.'.jpg' : ' ';
+        return $this->has_thumbnail ? yii::$app->params['frontendUrl'].'storage/thumbs/'.$this->video_id.'.jpg' : ' ';
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        $videoPath = Yii::getAlias('@frontend/web/storage/videos/'.$this->video_id.'.mp4');
+        $thumbnailPath = Yii::getAlias('@frontend/web/storage/thumbs/'.$this->video_id.'.jpg');
+        unlink($videoPath);
+        if(file_exists($thumbnailPath)) {
+            unlink($thumbnailPath);
+        }
     }
 }
