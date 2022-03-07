@@ -10,18 +10,28 @@ use yii\widgets\ActiveForm;
 
 <div class="videos-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(
+            ['options' => ['enctype' => 'multipart/form-data']]
+    );?>
 
     <div class="row">
         <div class="col-sm-8">
 
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+
+            <div class="form-group">
+                <div class="mb-3">
+                    <label for="thumbnail" class="form-label"><?=$model->getAttributeLabel('thumbnail')?></label>
+                    <input class="form-control" type="file" id="thumbnail" name="thumbnail">
+                </div>
+            </div>
+
             <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class="col-sm-4 bg-light py-2">
-            <video class="ratio ratio-16x9 mb-2" controls>
+            <video poster="<?=$model->getThumbnailLink()?>" class="ratio ratio-16x9 mb-2" controls>
                 <source src="<?=$model->getVideoLink()?>" type="video/mp4">
             </video>
             <div>
