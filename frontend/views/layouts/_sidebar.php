@@ -5,7 +5,7 @@
         'items' => [
             [
                     'label' => 'Home',
-                    'url' => ['site/index']
+                    'url' => ['videos/index']
             ],
             [
                     'label' => 'History',

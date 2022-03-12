@@ -79,7 +79,7 @@ class Videos extends \yii\db\ActiveRecord
             [['video_id'], 'unique'],
             ['has_thumbnail', 'default', 'value' => 0],
             ['status', 'default', 'value' => self::STATUS_UNLISTED],
-            ['thumbnail', 'image', 'minWidth' => 1200],
+            ['thumbnail', 'image', 'minWidth' => 600],
             ['video', 'file', 'extensions' => ['mp4', 'webm']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(),'targetAttribute' => ['created_by' => 'id']],
         ];
@@ -161,8 +161,9 @@ class Videos extends \yii\db\ActiveRecord
             $this->thumbnail->saveAs($thumbnailPath);
             Image::getImagine()
                 ->open($thumbnailPath)
-                ->thumbnail(new Box(1280, 1280))
-                ->save();
+                ->thumbnail(new Box(1280, 720))
+                ->resize(new Box(1280, 720))
+                ->save($thumbnailPath);
         }
 
         return true;

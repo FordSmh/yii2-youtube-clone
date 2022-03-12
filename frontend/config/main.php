@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'name' => 'CloneTube',
     'bootstrap' => ['log'],
+    'defaultRoute' => 'videos/index',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [

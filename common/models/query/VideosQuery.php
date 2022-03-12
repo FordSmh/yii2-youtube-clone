@@ -35,4 +35,8 @@ class VideosQuery extends \yii\db\ActiveQuery
     public function creator($userId) {
         return $this->andWhere(['created_by' => $userId]);
     }
+
+    public function published() {
+        return $this->andWhere(['status' => Videos::STATUS_PUBLISHED]);
+    }
 }
