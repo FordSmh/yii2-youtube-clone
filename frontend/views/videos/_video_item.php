@@ -12,7 +12,7 @@ use yii\helpers\Url;
         <div class="card-body">
             <h5 class="card-title"><?=$model->title?></h5>
             <p class="text-muted card-text m-0"><?=$model->createdBy->username?></p>
-            <p class="text-muted card-text m-0">100 views . <?=Yii::$app->formatter->asRelativeTime($model->created_at)?></p>
+            <p class="text-muted card-text m-0"><?=$model->getViews()->count()?> views. <?=Yii::$app->formatter->asRelativeTime($model->created_at)?></p>
         </div>
     </div>
 </div>
