@@ -3,7 +3,9 @@
 namespace frontend\controllers;
 
 use common\models\query\Subscriber;
+use common\models\query\Videos;
 use common\models\User;
+use yii\data\ActiveDataProvider;
 use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,8 +31,14 @@ class ChannelController extends Controller
 
     public function actionView($username) {
         $channel = $this->findChannel($username);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Videos::find()->creator($channel->id)->published()
+        ]);
+
         return $this->render('view' , [
-            'channel' => $channel
+            'channel' => $channel,
+            'dataProvider' => $dataProvider
         ]);
     }
 

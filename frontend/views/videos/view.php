@@ -16,9 +16,7 @@ use yii\helpers\Url;
         ]);?>
         <?php \yii\widgets\Pjax::end();?>
         <div>
-            <p><?=Html::a($model->createdBy->username, [
-                    'channel/view', 'username' => $model->createdBy->username
-                ])?></p>
+            <p><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
             <p><?=Html::encode($model->description)?></p>
         </div>
     </div>

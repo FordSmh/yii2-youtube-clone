@@ -11,7 +11,7 @@ use yii\helpers\Url;
         </a>
         <div class="card-body">
             <h5 class="card-title"><?=$model->title?></h5>
-            <p class="text-muted card-text m-0"><?=$model->createdBy->username?></p>
+            <p class="text-muted card-text m-0"><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
             <p class="text-muted card-text m-0"><?=$model->getViews()->count()?> views. <?=Yii::$app->formatter->asRelativeTime($model->created_at)?></p>
         </div>
     </div>
