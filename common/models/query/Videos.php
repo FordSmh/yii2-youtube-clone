@@ -125,6 +125,16 @@ class Videos extends \yii\db\ActiveRecord
         return $this->hasMany(VideoView::class, ['video_id' => 'video_id']);
     }
 
+    public function getLikes() {
+        return $this->hasMany(VideoLike::class, ['video_id' => 'video_id'])
+            ->liked();
+    }
+
+    public function getDislikes() {
+        return $this->hasMany(VideoLike::class, ['video_id' => 'video_id'])
+            ->disliked();
+    }
+
     /**
      * {@inheritdoc}
      * @return VideosQuery the active query used by this AR class.
@@ -190,5 +200,19 @@ class Videos extends \yii\db\ActiveRecord
         if(file_exists($thumbnailPath)) {
             unlink($thumbnailPath);
         }
+    }
+
+    public function isLikedBy($userId) {
+        return VideoLike::find()
+            ->userIdVideoId($userId, $this->video_id)
+            ->liked()
+            ->one();
+    }
+
+    public function isDislikedBy($userId) {
+        return VideoLike::find()
+            ->userIdVideoId($userId, $this->video_id)
+            ->disliked()
+            ->one();
     }
 }
