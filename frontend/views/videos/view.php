@@ -1,6 +1,7 @@
 <?php
 /** @var $model \common\models\query\Videos */
 
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
@@ -14,6 +15,12 @@ use yii\helpers\Url;
                 'model' => $model
         ]);?>
         <?php \yii\widgets\Pjax::end();?>
+        <div>
+            <p><?=Html::a($model->createdBy->username, [
+                    'channel/view', 'username' => $model->createdBy->username
+                ])?></p>
+            <p><?=Html::encode($model->description)?></p>
+        </div>
     </div>
     <div class="col-12 col-sm-4">
 
