@@ -2,6 +2,9 @@
 
 namespace common\models\query;
 
+use yii\helpers\Html;
+use yii\base\Security;
+
 /**
  * This is the ActiveQuery class for [[Videos]].
  *
@@ -38,5 +41,11 @@ class VideosQuery extends \yii\db\ActiveQuery
 
     public function published() {
         return $this->andWhere(['status' => Videos::STATUS_PUBLISHED]);
+    }
+
+    public function byKeyword($keyword) {
+        return $this->andWhere(['ilike', 'title', $keyword])
+            ->orWhere(['ilike', 'description', $keyword])
+            ->orWhere(['ilike', 'tags' , $keyword]);
     }
 }

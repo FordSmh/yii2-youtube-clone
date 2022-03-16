@@ -24,6 +24,12 @@ if (Yii::$app->user->isGuest) {
         . Html::endForm()
         . '</li>';
 }
+?>
+<form action="<?=\yii\helpers\Url::to(['/videos/search'])?>" class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search videos" name="keyword">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<?php
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav'],
     'items' => $menuItems,
