@@ -48,4 +48,19 @@ class VideosQuery extends \yii\db\ActiveQuery
             ->orWhere(['ilike', 'description', $keyword])
             ->orWhere(['ilike', 'tags' , $keyword]);
     }
+    public function latest()
+    {
+        return $this->orderBy(['created_at' => SORT_DESC]);
+    }
+
+    public function fulltextSearch($keyword) {
+        return $this
+            ->select(['*', 'ts_headline(title, q) AS ind_title',
+                'ts_headline(description, q) AS ind_desc',
+                'ts_headline(tags, q) AS ind_tags'])
+            ->from(['videos', 'to_tsquery(:keyword) q'])
+            ->where('make_tsvector(title, description, tags) @@ q')
+            ->orderBy(['ts_rank(make_tsvector(title, description, tags), q)' => SORT_DESC])
+            ->params(['keyword' => $keyword]);
+    }
 }

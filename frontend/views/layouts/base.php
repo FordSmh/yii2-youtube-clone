@@ -19,11 +19,13 @@ AppAsset::register($this);
     <?php $this->head() ?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-100">
+<body>
 <?php $this->beginBody() ?>
-<header><?php echo $this->render('_header')?></header>
-<?= $content ?>
-<?php echo $this->render('_footer')?>
+<div class="container-fluid">
+    <header class="row"><?php echo $this->render('_header')?></header>
+    <?= $content ?>
+    <?php echo $this->render('_footer')?>
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>

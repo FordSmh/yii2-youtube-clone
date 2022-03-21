@@ -12,3 +12,62 @@
 2022/03/04 04:49:31 [error] 10#10: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.96.1, server: frontend.test, request: "GET /index-test.php HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "frontend.test"
 2022/03/04 04:54:42 [error] 10#10: *10 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.96.1, server: frontend.test, request: "GET /test,html HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "frontend.test"
 2022/03/04 04:55:58 [error] 11#11: *13 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.96.1, server: frontend.test, request: "GET /test,html HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "frontend.test"
+2022/03/16 11:40:00 [error] 10#10: *386 access forbidden by rule, client: 172.20.0.1, server: frontend.test, request: "GET /videos/... HTTP/1.1", host: "frontend.test", referrer: "http://frontend.test/videos/view?id=PRMzgdfA"
+2022/03/16 19:07:56 [error] 10#10: *536 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /var/www/youtube/public/frontend/controllers/VideosController.php on line 117. in /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php:368
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php(341): yii\web\Response->sendHeaders()
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(136): yii\web\Response->send()
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /var/www/youtube/public/frontend/controllers/VideosController.php on line 117. in /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php:368
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php(341): yii\web\Response->sendHeaders()
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/base/Application.php(390): yii\web\Response->send()
+#2 /var/www/youtube/public/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi',
+    'OCI_HOME' => '/opt/oracle/instantclient_12_1',
+    'HOSTNAME' => '9145f45495c3',
+    'PHP_INI_DIR' => '/usr/local/etc/php',
+    'LD_LIBRARY_PATH' => '/opt/oracle/instantclient_12_1',
+    'OCI_LIB_DIR' => '/opt/oracle/instantclient_12_1',
+    'HOME' => '/var/www',
+    'LARADOCK_PHALCON_VERSION' => '4.0.5',
+    'PHP_IDE_CONFIG' => 'serverName=laradock',
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie',
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64',
+    'DOCKER_TLS_VERIFY' => '1',
+    'PHP_VERSION' => '8.0
+2022/03/16 19:08:23 [error] 10#10: *537 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /var/www/youtube/public/frontend/controllers/VideosController.php on line 118. in /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php:368
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php(341): yii\web\Response->sendHeaders()
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/web/ErrorHandler.php(136): yii\web\Response->send()
+#2 /var/www/youtube/public/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /var/www/youtube/public/frontend/controllers/VideosController.php on line 118. in /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php:368
+Stack trace:
+#0 /var/www/youtube/public/vendor/yiisoft/yii2/web/Response.php(341): yii\web\Response->sendHeaders()
+#1 /var/www/youtube/public/vendor/yiisoft/yii2/base/Application.php(390): yii\web\Response->send()
+#2 /var/www/youtube/public/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --disable-cgi',
+    'OCI_HOME' => '/opt/oracle/instantclient_12_1',
+    'HOSTNAME' => '9145f45495c3',
+    'PHP_INI_DIR' => '/usr/local/etc/php',
+    'LD_LIBRARY_PATH' => '/opt/oracle/instantclient_12_1',
+    'OCI_LIB_DIR' => '/opt/oracle/instantclient_12_1',
+    'HOME' => '/var/www',
+    'LARADOCK_PHALCON_VERSION' => '4.0.5',
+    'PHP_IDE_CONFIG' => 'serverName=laradock',
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie',
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64',
+    'DOCKER_TLS_VERIFY' => '1',
+    'PHP_VERSION' => '8.0

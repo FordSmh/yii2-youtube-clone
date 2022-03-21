@@ -6,6 +6,7 @@ use common\models\query\VideoLike;
 use common\models\query\Videos;
 use common\models\query\VideoView;
 use yii\data\ActiveDataProvider;
+use yii\data\SqlDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
@@ -45,7 +46,7 @@ class VideosController extends Controller
              'dataProvider' => $dataProvider
          ]);
      }
-     public function actionView($id) {
+     public function actionWatch($id) {
 
          $video = $this->findVideo($id);
 
@@ -55,8 +56,15 @@ class VideosController extends Controller
          $videoView->created_at = time();
          $videoView->save();
 
-        return $this->render('view', [
-            'model' => $video
+         $similarVideos = Videos::find()
+             ->fulltextSearch($this->prepareStrForFtSearch($video->title))
+             ->published()
+             ->andWhere(['NOT', ['video_id' => $id]])
+             ->all();
+
+        return $this->render('watch', [
+            'model' => $video,
+            'similarVideos' => $similarVideos
             ]);
      }
      public function actionLike($id) {
@@ -102,13 +110,16 @@ class VideosController extends Controller
     }
 
     public function actionSearch($keyword) {
-        $keyword = Html::encode($keyword);
+        $query = Videos::find()->fulltextSearch($this->prepareStrForFtSearch($keyword));
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Videos::find()->published()->byKeyword($keyword)
+            'query' => $query
         ]);
-        return $this->render('index', [
-            'dataProvider' => $dataProvider
+
+        return $this->render('search', [
+           'dataProvider' => $dataProvider,
         ]);
+
     }
 
     public function actionHistory() {
@@ -148,5 +159,11 @@ class VideosController extends Controller
          $videoLikeDislike->type = $type;
          $videoLikeDislike->created_at = time();
          $videoLikeDislike->save();
+     }
+
+     protected function prepareStrForFtSearch($string) {
+         $string = preg_replace('/[^A-Za-z0-9\s]/', '', $string);
+         $string = preg_replace('/\s{2,}/', ' ', $string);
+         return str_replace(' ', ' | ',$string);
      }
 }

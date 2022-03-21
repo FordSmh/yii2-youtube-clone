@@ -1,11 +1,14 @@
 <?php
     /** @var $dataProvider \yii\data\ActiveDataProvider */
+
+$this->title = 'History view page'  . ' - ' . Yii::$app->name;
 ?>
-<h1 class="h2">History view page</h1>
+<h1 class="h2 mb-5">History view page</h1>
+
 <?php echo \yii\widgets\ListView::widget([
    'dataProvider' => $dataProvider,
-    'itemView' => '_video_item',
-    'layout' => '<div class="row row-cols-1 row-cols-md-4 g-4">{items}</div>{pager}',
+    'itemView' => '_history_item',
+    'layout' => '<div class="row">{items}</div>{pager}',
     'itemOptions' => [
             'tag' => false
     ]

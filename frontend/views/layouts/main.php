@@ -7,17 +7,19 @@ use common\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 
 $this->beginContent('@frontend/views/layouts/base.php')?>
-<div class="d-flex h-100">
-    <aside><?php echo $this->render('_sidebar')?></aside>
+<div class="row">
 
-    <main role="main" class="flex-shrink-0 p-2 p-md-5">
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
-        </div>
-    </main>
+    <aside class="col-1 g-0">
+        <?php echo $this->render('_sidebar')?>
+    </aside>
+
+    <div class="col-10 mt-5 px-5">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
+    </div>
+
 </div>
 <?php $this->endContent()?>

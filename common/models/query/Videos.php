@@ -34,6 +34,10 @@ class Videos extends \yii\db\ActiveRecord
     const STATUS_UNLISTED = 0;
     const STATUS_PUBLISHED = 1;
 
+    public $ind_title;
+    public $ind_desc;
+    public $ind_tags;
+
     /**
      * @var UploadedFile
      */
@@ -165,7 +169,9 @@ class Videos extends \yii\db\ActiveRecord
             if (!is_dir(dirname($videoPath))) {
                 FileHelper::createDirectory(dirname($videoPath));
             }
-            $this->video->saveAs($videoPath);
+            if ($this->validate()) {
+                $this->video->saveAs($videoPath);
+            }
         }
         if ($this->thumbnail) {
             $thumbnailPath = Yii::getAlias('@frontend/web/storage/thumbs/' . $this->video_id . '.jpg');
