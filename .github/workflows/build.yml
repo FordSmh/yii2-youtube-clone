@@ -6,10 +6,10 @@ name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}-mysql-${{ matrix.mysql }}
+    name: PHP ${{ matrix.php }}-pgsql-${{ matrix.pgsql }}
 
     env:
-      extensions: dom, json, gd, imagick, pdo, pdo_mysql
+      extensions: dom, json, gd, imagick, pdo, pdo_pgsql
       key: cache-v1
 
     runs-on: ${{ matrix.os }}
@@ -20,26 +20,21 @@ jobs:
           - ubuntu-latest
 
         php:
-          - "5.6"
-          - "7.0"
-          - "7.1"
-          - "7.2"
-          - "7.3"
-          - "7.4"
           - "8.0"
 
-        mysql:
-          - "5.7"
+        pgsql:
+          - "14.1"
 
     services:
-      mysql:
-        image: mysql:${{ matrix.mysql }}
+      postgres:
+        image: postgres
         env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: yii2advanced_test
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          POSTGRES_PASSWORD: secret
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout
@@ -86,9 +81,9 @@ jobs:
       - name: Setup app advanced
         run: |
           ./init --env=Development
-          sed -i "s/'dsn' => 'mysql:host=localhost;dbname=yii2advanced_test'/'dsn' => 'mysql:host=127.0.0.1;dbname=yii2advanced_test'/" common/config/test-local.php
-          sed -i "/'db'/a 'username' => 'root'," common/config/test-local.php
-          sed -i "/'db'/a 'password' => 'root'," common/config/test-local.php
+          sed -i "s/'dsn' => 'mysql:host=localhost;dbname=yii2advanced_test'/'dsn' => 'pgsql:host=postgres;port=5432;dbname=default'/" common/config/test-local.php
+          sed -i "/'db'/a 'username' => 'default'," common/config/test-local.php
+          sed -i "/'db'/a 'password' => 'secret'," common/config/test-local.php
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" frontend/config/main.php
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" backend/config/main.php
 
