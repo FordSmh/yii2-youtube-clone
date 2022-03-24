@@ -21,7 +21,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="container-fluid">
+<div class="container-fluid min-vh-100 d-flex flex-column">
     <header class="row"><?php echo $this->render('_header')?></header>
     <?= $content ?>
     <?php echo $this->render('_footer')?>

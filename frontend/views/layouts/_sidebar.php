@@ -10,6 +10,10 @@
             [
                     'label' => 'History',
                     'url' => ['videos/history']
+            ],
+            [
+                'label' => 'Profile page',
+                'url' => ['/profile/index']
             ]
         ]
 ])?>

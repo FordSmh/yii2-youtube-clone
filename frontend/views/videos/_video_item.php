@@ -14,7 +14,7 @@ use yii\helpers\Url;
                 <h3 class="h6 card-title main-video-title"><?=$model->title?></h3>
             </a>
             <p class="text-muted card-text m-0"><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
-            <p class="text-muted card-text m-0"><?=$model->getViews()->count()?> views. <?=Yii::$app->formatter->asRelativeTime($model->created_at)?></p>
+            <p class="text-muted card-text m-0"><?=$model->getViews()->count()?> views - <?=Yii::$app->formatter->asRelativeTime($model->created_at)?></p>
         </div>
     </div>
 </div>

@@ -12,12 +12,12 @@ $this->title = $model->title . ' - ' . Yii::$app->name;
             <video controls poster="<?=$model->getThumbnailLink()?>" class="ratio ratio-16x9" src="<?=$model->getVideoLink()?>">
             </video>
         </div>
+        <h1 class="h5"><?=$model->title?></h1>
         <div class="d-flex justify-content-between">
             <div>
-                <h1 class="h5"><?=$model->title?></h1>
-                <p><?=$model->getViews()->count()?> views . <?=Yii::$app->formatter->asDate($model->created_at)?></p>
+                <p><?=$model->getViews()->count()?> views - <?=Yii::$app->formatter->asDate($model->created_at)?></p>
             </div>
-            <div style="min-width: 100px;" class="text-end">
+            <div class="text-end">
                 <?php \yii\widgets\Pjax::begin();?>
                 <?= $this->render('_like_dislike_buttons', [
                     'model' => $model
@@ -29,7 +29,7 @@ $this->title = $model->title . ' - ' . Yii::$app->name;
 
         <div>
             <p><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
-            <p><?=Html::encode($model->description)?></p>
+            <?=yii::$app->formatter->asNText(html::encode($model->description))?>
         </div>
 
     </div>
