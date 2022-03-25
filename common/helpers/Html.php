@@ -2,6 +2,7 @@
 
 namespace common\helpers;
 
+use common\models\User;
 use yii\helpers\Url;
 
 class Html
@@ -11,5 +12,9 @@ class Html
             'channel/view', 'username' => $user->username
         ], $schema),
         ['class' => 'text-muted']);
+    }
+
+    public static function channelUrl($userId){
+        return Url::to(['channel/view', 'username' => User::findOne($userId)->username]);
     }
 }

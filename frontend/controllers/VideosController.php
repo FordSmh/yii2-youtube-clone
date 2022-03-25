@@ -47,6 +47,22 @@ class VideosController extends Controller
          ]);
      }
 
+    public function actionSubscriptions() {
+        $query = Videos::find()
+            ->alias('v')
+            ->innerJoin('subscriber s',
+                's.channel_id = v.created_by And s.user_id = :user', ['user' => \Yii::$app->user->id])
+            ->orderBy('v.created_at desc')
+            ->published();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('subscriptions', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
     public function actionExplore() {
         $query = Videos::find()
             ->alias('v')

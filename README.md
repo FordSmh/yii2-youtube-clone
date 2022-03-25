@@ -6,16 +6,20 @@
 </p>
 <h2>Live demo</h2>
 <ul>
-    <li><a href="clonetube.andreydev.ru">Frontend part</a></li>
-    <li><a href="studio.clonetube.andreydev.ru">Backend part</a></li>
+    <li><a target="_blank" href="http://clonetube.andreydev.ru">Frontend part</a></li>
+    <li><a target="_blank" href="http://studio.clonetube.andreydev.ru">Backend part</a></li>
 </ul>
-<p>Project was build with help of Codeholic's youtube video tutorial - <a href="https://youtu.be/whuIf33v2Ug">https://youtu.be/whuIf33v2Ug</a></p>
+<p>Project was build with help of Codeholic's youtube video tutorial - <a target="_blank" href="https://youtu.be/whuIf33v2Ug">https://youtu.be/whuIf33v2Ug</a></p>
 
 <h2>Differences with tutorial project</h2>
 <ul>
     <li>Project is using PostgreSQL instead of MYSQL. Search and Similar videos functionality is using PostgreSQL's full text search</li>
     <li>User profile page functionality</li>
-    <li>More video related functionality such as Explore page ...</li>
+    <li>More video related functionality such as</li>
+    <ul>
+        <li>Explore page - Shows trending videos, the most viewed videos for the day</li>
+        <li>Subscription page - Shows videos by user subscribed channels</li>
+    </ul>
     <li>Design and layout, obviously</li>
 </ul>
 <!--
