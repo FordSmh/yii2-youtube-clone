@@ -16,13 +16,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <?=Html::a('Change password', ['change-password'], ['class' => 'btn btn-secondary'])?>
         <?=Html::a('Update profile info', ['update'], ['class' => 'btn btn-secondary'])?>
     </div>
+    <div class="d-flex mt-5 align-items-center">
+        <div class="flex-shrink-0">
+            <img class="ratio rounded-circle" style="max-width: 100px" src="<?=$model->getFullPicturePath($model->profile_picture)?>">
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'username',
+                    'email'
+                ],
+                'options' => ['class' => 'table table-hover table-border mb-0']
+            ]) ?>
+        </div>
+    </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'username',
-            'email',
-        ],
-    ]) ?>
 
 </div>

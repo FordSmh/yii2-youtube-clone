@@ -9,6 +9,7 @@ use frontend\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class ProfileController extends Controller
 {
@@ -56,8 +57,11 @@ class ProfileController extends Controller
         $user = $this->findModel();
         $model = new ProfileUpdateForm($user);
 
-        if ($model->load(Yii::$app->request->post()) && $model->update()) {
-            return $this->redirect(['index']);
+        if (Yii::$app->request->isPost) {
+            $model->profilePicture = UploadedFile::getInstance($model, 'profilePicture');
+            if ($model->update()) {
+                return $this->redirect(['index']);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -18,6 +18,7 @@ $this->title = 'Update user profile';
         <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'profilePicture')->fileInput() ?>
 
         <div class="form-group">
             <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>

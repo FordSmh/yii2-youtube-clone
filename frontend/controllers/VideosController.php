@@ -46,6 +46,24 @@ class VideosController extends Controller
              'dataProvider' => $dataProvider
          ]);
      }
+
+    public function actionExplore() {
+        $query = Videos::find()
+            ->alias('v')
+            ->innerJoin('video_view vv',
+                'v.video_id = vv.video_id')
+            ->where('cast(to_timestamp(vv.created_at) as date) = CURRENT_DATE')
+            ->groupBy('v.video_id')
+            ->orderBy('count(v.video_id) DESC');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('explore', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
      public function actionWatch($id) {
 
          $video = $this->findVideo($id);

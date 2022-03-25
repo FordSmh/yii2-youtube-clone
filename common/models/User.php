@@ -8,6 +8,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
 
 
 /**
@@ -24,12 +25,18 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $profile_picture
  */
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+
+    /**
+     * @var UploadedFile
+     */
+    public $profilePicture;
 
 
     /**
@@ -221,5 +228,11 @@ class User extends ActiveRecord implements IdentityInterface
             'channel_id' => $this->id,
             'user_id' => $userId
         ])->one();
+    }
+
+    public function getFullPicturePath($profilePic) {
+        if ($profilePic) {
+            return yii::$app->params['frontendUrl'] . 'storage/profilepics/' . $profilePic;
+        }
     }
 }

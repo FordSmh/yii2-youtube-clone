@@ -8,6 +8,10 @@
                     'url' => ['videos/index']
             ],
             [
+                'label' => 'Explore',
+                'url' => ['videos/explore']
+            ],
+            [
                     'label' => 'History',
                     'url' => ['videos/history']
             ],
