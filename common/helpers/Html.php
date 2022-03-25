@@ -15,6 +15,10 @@ class Html
     }
 
     public static function channelUrl($userId){
-        return Url::to(['channel/view', 'username' => User::findOne($userId)->username]);
+        if (\Yii::$app->user->isGuest) {
+            return Url::to('/site/login');
+        }
+        $user = User::findOne($userId);
+        return Url::to(['channel/view', 'username' => $user->username]);
     }
 }

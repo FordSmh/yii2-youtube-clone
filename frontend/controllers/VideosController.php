@@ -20,7 +20,7 @@ class VideosController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['like', 'dislike', 'history'],
+                'only' => ['like', 'dislike', 'history', 'subscriptions'],
                 'rules' => [
                     [
                         'allow' => true,
