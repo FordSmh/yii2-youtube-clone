@@ -20,7 +20,7 @@ class VideosController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['like', 'dislike', 'history', 'subscriptions'],
+                'only' => ['like', 'dislike', 'history', 'subscriptions', 'liked'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -76,6 +76,22 @@ class VideosController extends Controller
             'query' => $query
         ]);
         return $this->render('explore', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionLiked() {
+        $query = Videos::find()
+            ->alias('v')
+            ->innerJoin('video_like vl',
+                'v.video_id = vl.video_id')
+            ->where('vl.user_id = :user', ['user' => \Yii::$app->user->id])
+            ->orderBy('vl.created_at DESC');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('liked', [
             'dataProvider' => $dataProvider
         ]);
     }

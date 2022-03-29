@@ -10,9 +10,10 @@
     <li><a target="_blank" href="http://studio.clonetube.andreydev.ru">Backend part</a></li>
 </ul>
 <p>Project was build with help of Codeholic's youtube video tutorial - <a target="_blank" href="https://youtu.be/whuIf33v2Ug">https://youtu.be/whuIf33v2Ug</a></p>
-
+<p><strong>Not forked or copypasted but built step by step.</strong> Also project has a lot of new functions and differences.</p>
 <h2>Differences with tutorial project</h2>
 <ul>
+    <p>+</p>
     <li>Project is using PostgreSQL instead of MYSQL. Search and Similar videos functionality is using PostgreSQL's full text search</li>
     <li>User profile page functionality</li>
     <li>More video related functionality such as</li>
@@ -21,6 +22,11 @@
         <li>Subscription page - Shows videos by user subscribed channels</li>
     </ul>
     <li>Design and layout, obviously</li>
+    <li>REST Api for <code> rest/index rest/view rest/update rest/delete</code> operations with model Videos</li>
+    <br>
+    <p>-</p>
+    <li>You won't be able to sign up because email sending is not implemented on the demo server</li>
+    <li>No adaptive layout yet</li>
 </ul>
 <!--
 Documentation is at [docs/guide/README.md](docs/guide/README.md).

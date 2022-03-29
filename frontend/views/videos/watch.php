@@ -5,6 +5,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 $this->title = $model->title . ' - ' . Yii::$app->name;
+$profilePicture = $model->createdBy->getFullPicturePath($model->createdBy->profile_picture);
+
 ?>
 <div class="row">
     <div class="col-12 col-sm-8">
@@ -27,9 +29,18 @@ $this->title = $model->title . ' - ' . Yii::$app->name;
 
         </div>
 
-        <div>
-            <p><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
-            <?=yii::$app->formatter->asNText(html::encode($model->description))?>
+        <div class="d-flex">
+            <div class="flex-shrink-0">
+                <a class="text-decoration-none text-dark" href="<?=Url::to(['channel/view', 'username' => $model->createdBy->username])?>">
+                    <img style="max-width: 50px" class="rounded-circle ratio" src="<?=$profilePicture ? $profilePicture : Yii::$app->params['defaultProfilePicture']?>" alt="...">
+                </a>
+            </div>
+            <div class="flex-grow-1 ms-3">
+                <p class="mb-0"><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
+                <p class="text-muted"><?php echo $model->createdBy->getSubscribers()->count() . ' subscribers'?></p>
+                <p><?=yii::$app->formatter->asNText(html::encode($model->description))?></p>
+            </div>
+
         </div>
 
     </div>

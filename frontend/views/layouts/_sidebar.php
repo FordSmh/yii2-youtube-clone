@@ -2,7 +2,7 @@
 
 echo \yii\bootstrap5\Nav::widget([
         'options' => [
-                'class' => 'd-flex flex-column flex-shrink-0 p-3 bg-dark h-100 nav-pills h-100 w-100'
+                'class' => 'd-flex flex-column flex-shrink-0 p-3 bg-dark h-100 nav-pills h-100'
         ],
         'items' => [
             [
@@ -26,10 +26,15 @@ echo \yii\bootstrap5\Nav::widget([
                 'label' => 'Your videos',
                 'url' => [\common\helpers\Html::channelUrl(Yii::$app->user->id)]
             ],
+            [
+                'label' => 'Liked videos',
+                'url' => ['videos/liked']
+            ],
             '<hr class="border">',
             [
                 'label' => 'Profile page',
                 'url' => ['/profile/index']
-            ]
+            ],
+            '<hr class="border">'
         ]
 ])?>
