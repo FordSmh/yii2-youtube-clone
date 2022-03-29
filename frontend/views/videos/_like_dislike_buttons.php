@@ -6,7 +6,7 @@ use yii\helpers\Url;
 ?>
 <a href="<?php echo Url::to(['/videos/like', 'id' => $model->video_id])?>"
    class="btn btn-sm
-   <?= $model->isLikedBy(Yii::$app->user->id) ? 'btn-outline-primary' : 'btn-outline-secondary'?>"
+   <?= $model->isLikedBy(Yii::$app->user->id) ? 'btn-secondary' : 'btn-outline-secondary'?>"
    data-method="post"
    data-pjax="1">
     <i class="fas fa-thumbs-up"></i>
@@ -15,7 +15,7 @@ use yii\helpers\Url;
 </a>
 <a href="<?php echo Url::to(['/videos/dislike', 'id' => $model->video_id])?>"
    class="btn btn-sm
-   <?= $model->isDislikedBy(Yii::$app->user->id) ? 'btn-outline-primary' : 'btn-outline-secondary'?>"
+   <?= $model->isDislikedBy(Yii::$app->user->id) ? 'btn-secondary' : 'btn-outline-secondary'?>"
    data-method="post"
    data-pjax="1">
     <i class="fas fa-thumbs-down"></i>

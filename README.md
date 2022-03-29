@@ -20,6 +20,7 @@
     <ul>
         <li>Explore page - Shows trending videos, the most viewed videos for the day</li>
         <li>Subscription page - Shows videos by user subscribed channels</li>
+        <li>Liked page - Shows videos liked by user</li>
     </ul>
     <li>Design and layout, obviously</li>
     <li>REST Api for <code> rest/index rest/view rest/update rest/delete</code> operations with model Videos</li>

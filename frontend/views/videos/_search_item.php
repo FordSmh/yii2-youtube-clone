@@ -3,7 +3,7 @@
 
 use yii\helpers\Url;
 ?>
-<div class="col-8">
+<div class="col-12 col-md-8">
     <div class="card mb-3 border-0">
         <div class="row g-0">
             <div class="col-md-4">

@@ -21,7 +21,7 @@ $this->title = 'Change profile password';
         <?= $form->field($model, 'newPasswordRepeat')->passwordInput(['maxlength' => true]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-secondary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

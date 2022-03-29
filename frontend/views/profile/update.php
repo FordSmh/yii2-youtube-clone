@@ -21,7 +21,7 @@ $this->title = 'Update user profile';
         <?= $form->field($model, 'profilePicture')->fileInput() ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Update', ['class' => 'btn btn-secondary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
