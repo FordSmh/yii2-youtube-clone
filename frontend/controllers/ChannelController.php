@@ -6,7 +6,6 @@ use common\models\query\Subscriber;
 use common\models\query\Videos;
 use common\models\User;
 use yii\data\ActiveDataProvider;
-use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -18,7 +17,7 @@ class ChannelController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['subscribe'],
+                'only' => ['subscribe', 'my'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -81,8 +80,12 @@ class ChannelController extends Controller
         if (!$channel) {
             throw new NotFoundHttpException();
         }
-
         return $channel;
+    }
+
+    public function actionMy() {
+        $user = User::findOne(\Yii::$app->user->id);
+        $this->redirect(['/channel/view', 'username' => $user->username]);
     }
 
 }

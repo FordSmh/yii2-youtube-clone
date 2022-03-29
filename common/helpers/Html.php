@@ -13,12 +13,4 @@ class Html
         ], $schema),
         ['class' => 'text-muted']);
     }
-
-    public static function channelUrl($userId){
-        if (\Yii::$app->user->isGuest) {
-            return Url::to('/site/login');
-        }
-        $user = User::findOne($userId);
-        return Url::to(['channel/view', 'username' => $user->username]);
-    }
 }

@@ -24,7 +24,7 @@ echo \yii\bootstrap5\Nav::widget([
             ],
             [
                 'label' => 'Your videos',
-                'url' => [\common\helpers\Html::channelUrl(Yii::$app->user->id)]
+                'url' => ['channel/my']
             ],
             [
                 'label' => 'Liked videos',
