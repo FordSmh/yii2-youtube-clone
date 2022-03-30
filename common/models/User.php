@@ -239,9 +239,19 @@ class User extends ActiveRecord implements IdentityInterface
         ])->one();
     }
 
-    public function getFullPicturePath($profilePic) {
+    public static function getFullPicturePath($profilePic) {
         if ($profilePic) {
             return yii::$app->params['frontendUrl'] . 'storage/profilepics/' . $profilePic;
+        }
+        else {
+            return yii::$app->params['frontendUrl'] . Yii::$app->params['defaultProfilePicture'];
+        }
+    }
+
+    public static function getFullPicturePathByUserId($id) {
+        if ($id) {
+            $user = static::findOne(['id' => $id]);
+            return static::getFullPicturePath($user->profile_picture);
         }
     }
 }

@@ -12,6 +12,8 @@ NavBar::begin([
 ]);
 $menuItems = [
     ['label' => 'Upload video', 'url' => ['/videos/create']],
+    ['label' => 'Back to Clonetube', 'url' => Yii::$app->urlManagerFrontend->createAbsoluteUrl([''])]
+
 ];
 if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

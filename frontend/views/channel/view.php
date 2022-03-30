@@ -12,12 +12,20 @@ $this->title = $channel->username . ' - ' . Yii::$app->name;
 ?>
 
 <div class="p-5 bg-light border rounded-3 mb-3">
-    <h2><?=$channel->username?></h2>
-    <?php Pjax::begin()?>
-    <?php echo $this->render('_subscribe', [
-            'channel' => $channel
+    <div class="d-flex align-items-center">
+        <div class="flex-shrink-0">
+            <img class="ratio rounded-circle" style="max-width: 100px" src="<?=$channel->getFullPicturePath($channel->profile_picture)?>">
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <h2><?=$channel->username?></h2>
+            <?php Pjax::begin()?>
+            <?php echo $this->render('_subscribe', [
+                'channel' => $channel
             ])?>
-    <?php Pjax::end()?>
+            <?php Pjax::end()?>
+        </div>
+    </div>
+
 </div>
 
 <?php echo \yii\widgets\ListView::widget([

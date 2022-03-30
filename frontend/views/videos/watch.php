@@ -32,7 +32,7 @@ $profilePicture = $model->createdBy->getFullPicturePath($model->createdBy->profi
         <div class="d-flex">
             <div class="flex-shrink-0">
                 <a class="text-decoration-none text-dark" href="<?=Url::to(['channel/view', 'username' => $model->createdBy->username])?>">
-                    <img style="max-width: 50px" class="rounded-circle ratio" src="<?=$profilePicture ? $profilePicture : Yii::$app->params['defaultProfilePicture']?>" alt="...">
+                    <img style="max-width: 50px" class="rounded-circle ratio" src="<?=$profilePicture?>" alt="...">
                 </a>
             </div>
             <div class="flex-grow-1 ms-3">
