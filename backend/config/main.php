@@ -46,6 +46,12 @@ return [
                 'videos/update/<video_id>' => 'videos/update'
             ],
         ],
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\UrlManager',
+            'hostInfo' => 'http://frontend.test',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
         'assetManager' => [
             'appendTimestamp' => true
         ]

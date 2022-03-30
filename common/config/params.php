@@ -6,5 +6,5 @@ return [
     'senderName' => 'Example.com mailer',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
-    'defaultProfilePicture' => '/img/profile-pic.svg'
+    'defaultProfilePicture' => 'img/profile-pic.svg'
 ];

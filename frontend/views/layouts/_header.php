@@ -13,18 +13,34 @@ BootstrapPluginAsset::register(Yii::$app->view);
         </div>
         <?php
         $menuItems = [];
+        $menuItems[] = [
+                'label' => 'Upload a video',
+                'url' => Yii::$app->urlManagerBackend->createAbsoluteUrl(['/videos/create'])
+        ];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Sign up', 'url' => ['/site/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
+            $menuItems[] = [
+                    'encode' => false,
+                'label' => '<img style="max-width: 50px" class="rounded-circle ratio" src="'. \common\models\User::getFullPicturePathByUserId(Yii::$app->user->id) .'" alt="Profile picture">',
+                'items' => [
+                    ['label' => 'Your videos', 'url' => '/channel/my'],
+                    ['label' => 'Clonetube Studio', 'url' => Yii::$app->urlManagerBackend->createAbsoluteUrl(['site/index'])],
+                    '<div class="dropdown-divider"></div>',
+                    ['label' => 'Profile', 'url' => '/profile/index'],
+                    '<div class="dropdown-item">'
+                    . Html::beginForm(['/site/logout'], 'post')
+                    . Html::submitButton(
+                        'Sign out (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn p-0 text-decoration-none']
+                    )
+                    . Html::endForm()
+                    . '</div>',
+                ],
+                'linkOptions' => ['class' => 'p-0 ms-md-4', 'style' => 'max-width: 40px'],
+                'dropdownOptions' => ['class' => 'dropdown-menu-end']
+            ];
         }
         ?>
         <form action="<?=\yii\helpers\Url::to(['/videos/search'])?>" class="d-flex col-12 col-md-4 ">

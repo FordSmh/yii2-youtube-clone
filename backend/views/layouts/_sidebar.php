@@ -12,8 +12,8 @@
                     'url' => ['videos/index']
             ],
             [
-                    'label' => 'Comments',
-                    'url' => ['comments/index']
+                    'label' => 'Your channel',
+                    'url' => Yii::$app->urlManagerFrontend->createAbsoluteUrl(['channel/my'])
             ]
         ]
 ])?>
