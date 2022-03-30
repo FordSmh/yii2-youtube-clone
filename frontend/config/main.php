@@ -50,7 +50,9 @@ return [
             'showScriptName' => false,
             'rules' => [
                 ['class' => UrlRule::class, 'controller' => 'rest'],
-                '/channel/<username>' => '/channel/view'
+                'channel/my' => '/channel/my',
+                'channel/subscribe' => '/channel/subscribe',
+                'channel/<username>' => '/channel/view'
             ],
         ],
 
