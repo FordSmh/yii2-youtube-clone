@@ -6,7 +6,7 @@ use yii\bootstrap5\Nav;
 BootstrapPluginAsset::register(Yii::$app->view);
 ?>
 <nav id="w4" class="navbar navbar-expand-md navbar-dark bg-dark navbar">
-    <div class="container-fluid ps-0 justify-content-md-between justify-content-start">
+    <div class="container-fluid ps-md-0 justify-content-md-between justify-content-start">
         <div class="d-flex">
             <button type="button" class="border-0 d-block me-3 navbar-toggler" data-bs-toggle="collapse" data-bs-target="#aside" aria-controls="aside" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <a class="navbar-brand" href="/">CloneTube</a>
@@ -32,7 +32,8 @@ BootstrapPluginAsset::register(Yii::$app->view);
                     '<div class="dropdown-item">'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Sign out (' . Yii::$app->user->identity->username . ')',
+                        '
+                         Logout (' . Yii::$app->user->identity->username . ')',
                         ['class' => 'btn p-0 text-decoration-none']
                     )
                     . Html::endForm()

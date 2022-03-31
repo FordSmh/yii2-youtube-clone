@@ -38,7 +38,7 @@ $profilePicture = $model->createdBy->getFullPicturePath($model->createdBy->profi
             <div class="flex-grow-1 ms-3">
                 <p class="mb-0"><?php echo \common\helpers\Html::channelLink($model->createdBy)?></p>
                 <p class="text-muted"><?php echo $model->createdBy->getSubscribers()->count() . ' subscribers'?></p>
-                <p><?=yii::$app->formatter->asNText(html::encode($model->description))?></p>
+                <p><?=yii::$app->formatter->asNText($model->description)?></p>
             </div>
 
         </div>

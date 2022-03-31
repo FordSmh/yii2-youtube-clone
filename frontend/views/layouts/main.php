@@ -13,7 +13,7 @@ $this->beginContent('@frontend/views/layouts/base.php')?>
         <?php echo $this->render('_sidebar')?>
     </aside>
 
-    <div class="col-12 col-md-10 my-5 px-3 px-md-5">
+    <div class="col my-5 px-3 px-md-5">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
