@@ -2,7 +2,7 @@
 
 echo \yii\bootstrap5\Nav::widget([
         'options' => [
-                'class' => 'd-flex flex-column flex-shrink-0 p-3 bg-dark h-100 nav-pills h-100'
+                'class' => 'd-flex flex-column flex-shrink-0 p-3 bg-dark h-100 nav-pills h-100 text-nowrap'
         ],
         'items' => [
             [

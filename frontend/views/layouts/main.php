@@ -9,7 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 $this->beginContent('@frontend/views/layouts/base.php')?>
 <div class="row flex-grow-1">
 
-    <aside id="aside" class="col-12 col-md-1 g-0 collapse show collapse-horizontal">
+    <aside id="aside" class="col-12 col-md-2 col-lg-1 g-0 collapse show collapse-horizontal">
         <?php echo $this->render('_sidebar')?>
     </aside>
 
