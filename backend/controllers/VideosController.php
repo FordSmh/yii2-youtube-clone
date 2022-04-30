@@ -7,6 +7,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -76,8 +77,14 @@ class VideosController extends Controller
      */
     public function actionView($video_id)
     {
+        $model = $this->findModel($video_id);
+
+        if ($model->created_by !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException('You are not allowed to view this page');
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($video_id),
+            'model' => $model
         ]);
     }
 
@@ -115,7 +122,9 @@ class VideosController extends Controller
     public function actionUpdate($video_id)
     {
         $model = $this->findModel($video_id);
-
+        if ($model->created_by !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException('You are not allowed to view this page');
+        }
         $model->thumbnail = UploadedFile::getInstanceByName('thumbnail');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -136,7 +145,12 @@ class VideosController extends Controller
      */
     public function actionDelete($video_id)
     {
-        $this->findModel($video_id)->delete();
+        $model = $this->findModel($video_id);
+        if ($model->created_by !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException('You are not allowed to view this page');
+        }
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }
